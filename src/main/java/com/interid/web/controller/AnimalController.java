@@ -19,7 +19,7 @@ public class AnimalController {
     private final AnimalService animalService;
 
     @PostMapping("/import")
-    public ResponseEntity<?> importAnimal(@RequestParam("file") MultipartFile multipartFile) {
+    public ResponseEntity<?> importFromExcel(@RequestParam("file") MultipartFile multipartFile) {
         try {
             if (multipartFile.isEmpty()) {
                 return ResponseEntity.badRequest().body("Uploaded file is empty.");
@@ -28,7 +28,8 @@ public class AnimalController {
             List<AnimalDTO> animalDTOs = ExcelReader.readAnimalsFromExcel(multipartFile);
             animalService.saveAnimalsFromDTOs(animalDTOs);
             return ResponseEntity.ok("Animals imported successfully.");
-        } catch (IOException e) {
+
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error importing animals: " + e.getMessage());
         }

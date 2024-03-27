@@ -11,12 +11,11 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("BIRD")
+@EqualsAndHashCode(callSuper = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Bird extends Animal {
     @NotNull
-    BigDecimal fightSpeed;
+    BigDecimal flightSpeed;
 }

@@ -12,12 +12,11 @@ import java.util.UUID;
 
 @Entity
 @Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorColumn(name = "animal_type", discriminatorType = DiscriminatorType.STRING)
-public class Animal {
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     UUID id;
@@ -25,3 +24,4 @@ public class Animal {
     @NotNull
     String name;
 }
+

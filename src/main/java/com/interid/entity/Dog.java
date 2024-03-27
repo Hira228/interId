@@ -8,12 +8,13 @@ import lombok.experimental.FieldDefaults;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("DOG")
+@EqualsAndHashCode(callSuper = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Dog extends Animal {
     @NotNull
     private String runSpeed;
 }
+
+
